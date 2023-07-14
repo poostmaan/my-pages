@@ -1,0 +1,16 @@
+{
+  "name": "mypages",
+  "version": "1.0.0",
+  "description": "A SPA with a CRUD for your favorites sites, you can filter by sections",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,11 @@
+https://www.c-programming-simple-steps.com/data-type.html
+https://www.tutorialspoint.com/data_structures_algorithms/data_structures_algorithms_interview_questions.htm#
+https://github.com/public-apis/public-apis#cloud-storage--file-sharing
+https://github.com/sohamkamani/javascript-design-patterns-for-humans
+https://roadmap.sh/nodejs
+https://exercism.org/tracks/typescript
+https://dev.to/sanjayttg/jwt-authentication-in-react-with-react-router-1d03
+https://medium.com/@abubakarmemon/introduction-e2751fe12519
+https://learn.microsoft.com/es-es/training/paths/build-javascript-applications-nodejs/?WT.mc_id=DT-MVP-5004970
+https://learn.microsoft.com/es-es/training/paths/javascript-on-azure/?WT.mc_id=DT-MVP-5004970
+https://refactoring.guru/es
