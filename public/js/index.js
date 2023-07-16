@@ -39,7 +39,7 @@ function addPage(page = {}) {
 
 (async () => {
   try {
-    const pagesApi = await fetch(`http://localhost:58513/data/`);
+    const pagesApi = await fetch(`http://localhost:58513/pages/`);
     const pagesData = await pagesApi.json();
 
     if (Object.keys(pagesData).length === 0) {

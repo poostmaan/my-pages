@@ -1,8 +1,13 @@
 const fs = require("fs");
 
 class PagesData {
+
+  constructor() {
+    this.file = "public/data/pages2.txt";
+  }
+
   getData(callback) {
-    fs.readFile("public/data/pages2.txt", "utf8", (err, data) => {
+    fs.readFile(this.file, "utf8", (err, data) => {
       if (err) {
         console.error("Error al leer el archivo:", err);
         return;
@@ -12,10 +17,20 @@ class PagesData {
     });
   }
 
-  postData(data, callback) {
+  postData(newData, callback) {
     this.getData(( oldData => {
-      oldData.push(data)
-      callback(oldData);
+      const data = [ ...oldData, newData];
+
+      const jsonData = JSON.stringify(data);
+
+      fs.writeFile(this.file, jsonData, (err) => {
+        if(err) {
+          console.log("algo ocurrio", err);
+          return;
+        }
+      })
+
+      callback(data);
     }))
   }
 }
