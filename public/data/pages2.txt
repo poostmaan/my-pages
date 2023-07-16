@@ -4,76 +4,76 @@
       "imagen": "images/c-programming.png",
       "section": "Programming",
       "description": "Introduction to C programming data types",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://www.tutorialspoint.com/data_structures_algorithms/data_structures_algorithms_interview_questions.htm#",
       "imagen": "images/dsa-interview-qa.png",
       "section": "Programming",
       "description": "Common interview questions on data structures and algorithms",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://github.com/public-apis/public-apis#cloud-storage--file-sharing",
       "imagen": "images/public-apis.png",
       "section": "APIs",
       "description": "List of public APIs for cloud storage and file sharing",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://github.com/sohamkamani/javascript-design-patterns-for-humans",
       "imagen": "images/design-patterns-for-humans.png",
       "section": "JavaScript",
       "description": "JavaScript design patterns explained in simple terms",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://roadmap.sh/nodejs",
       "imagen": "images/node-roadmap.png",
       "section": "Node.js",
       "description": "Roadmap to learn Node.js",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://exercism.org/tracks/typescript",
       "imagen": "images/typescript-exercism.png",
       "section": "Programming",
       "description": "Exercism track for learning TypeScript",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://dev.to/sanjayttg/jwt-authentication-in-react-with-react-router-1d03",
       "imagen": "images/jwt-authentication-react.png",
       "section": "React",
       "description": "JWT authentication in React with React Router",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://medium.com/@abubakarmemon/introduction-e2751fe12519",
       "imagen": "images/currying-react.png",
       "section": "Programming",
       "description": "Introduction to programming concepts",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://learn.microsoft.com/es-es/training/paths/build-javascript-applications-nodejs/?WT.mc_id=DT-MVP-5004970",
       "imagen": "images/js-node.png",
       "section": "JavaScript",
       "description": "Learning path to build JavaScript applications with Node.js",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://learn.microsoft.com/es-es/training/paths/javascript-on-azure/?WT.mc_id=DT-MVP-5004970",
       "imagen": "images/js-azure.png",
       "section": "JavaScript",
       "description": "Learning path to use JavaScript on Azure",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     },
     {
       "url": "https://refactoring.guru/es",
       "imagen": "images/refactoring-guru.png",
       "section": "Programming",
       "description": "Refactoring techniques and patterns",
-      "created": "2023-07-08"
+      "created": "8/7/2023"
     }
   ]
