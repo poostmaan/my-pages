@@ -1,28 +1,50 @@
 const express = require('express');
+// const parser = require('body-parser');
 const path = require('path')
 const http = require('http');
 const fs = require('fs');
+const multer = require('multer');
+
+const { PagesData } = require('./public/helpers/PagesData');
 
 const app = express();
 const server = http.createServer(app);
 
 const frontpage = path.resolve(__dirname, "./public");
+const upload = multer({ dest: 'upload/'});
 
+const targetPath = "public/images/";
+const pages = new PagesData();
 app.use(express.static(frontpage));
+// app.use(upload.none());
 
-app.get('/data', (req, res) => {
+// app.use(parser.json());
 
-    fs.readFile('./public/data/pages2.txt', 'utf8', (err, data) => {
-        if (err) {
-          console.error('Error al leer el archivo:', err);
-          return;
-        }
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json());
 
-        const pages = JSON.parse(data);
-        res.json(pages)
-      });
+app.get('/pages', (req, res) => pages.getData(( data => res.json(data) )) );
 
-})
+app.post('/pages', upload.single('imagen'), (req, res) => {
+
+  const { url, description, section } = req.body;
+  const created = new Date().toLocaleDateString("es-ES");
+  const imagen = "images/" + req.file.originalname;
+
+  const target = targetPath + req.file.originalname;
+
+  let src = fs.createReadStream(req.file.path);
+  let dest = fs.createWriteStream(target);
+
+  src.pipe(dest);
+  src.on('error', function(err) { res.json({ err }); });
+
+  const newData = {url, imagen, section, description, created};
+
+  pages.postData(newData, (data) => res.json(data));
+
+});
 
 server.listen(58513, function(err) {
     if(err) throw new Error(err);
