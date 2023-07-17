@@ -9,7 +9,7 @@ async function savePage(data = {}, callback) {
         })
 
         const newData = await resp.json();
-        addPage(newData);
+        addPage(newData.data);
         callback()
 
         const index = newData.length;

@@ -9,7 +9,7 @@
       throw new Error("No data found");
     }
 
-    addPage(pagesData);
+    addPage(pagesData.data);
   } catch (error) {
     throw new Error(`An error: ${error}`);
   }
