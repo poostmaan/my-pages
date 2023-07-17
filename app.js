@@ -24,7 +24,7 @@ app.use(express.static(frontpage));
 // app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json());
 
-app.get('/pages', (req, res) => pages.getData(( data => res.json(data) )) );
+app.get('/pages', (req, res) => pages.getData(( data => res.status(data.status).json(data) )) );
 
 app.post('/pages', upload.single('imagen'), (req, res) => {
 
@@ -42,14 +42,22 @@ app.post('/pages', upload.single('imagen'), (req, res) => {
   src.on('end', function(err) { 
     const newData = {url, imagen, section, description, created};
 
-    pages.postData(newData, (data) => res.json(data));
+    pages.postData(newData, (data) => res.status(data.status).json(data));
   });
 
-  src.on('error', function(err) { res.json({ err }); });
+  src.on('error', function(err) { res.status(data.status).json({ err }); });
 
  
 
 });
+
+app.delete("/pages/:uuid", (req, res) => {
+
+  const { uuid } = req.params;
+
+  pages.deletePageByUuid(uuid, (data) => res.status(data.status).json(data))
+
+})
 
 server.listen(58513, function(err) {
     if(err) throw new Error(err);
