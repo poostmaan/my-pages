@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { v4: uuid } = require('uuid');
 
 class PagesData {
 
@@ -19,6 +20,9 @@ class PagesData {
 
   postData(newData, callback) {
     this.getData(( oldData => {
+
+      newData.uuid = uuid();
+
       const data = [ ...oldData, newData];
 
       const jsonData = JSON.stringify(data);
