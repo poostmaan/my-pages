@@ -1,0 +1,7 @@
+.close-btn {
+    display: none;
+}
+
+.box-shadow:hover > .close-btn {
+    display: block;
+}
