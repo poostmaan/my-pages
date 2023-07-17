@@ -1,39 +1,32 @@
 
 const addPageForm = document.querySelector('#addPageForm');
 
-async function savePage(data = {}) {
+async function savePage(data = {}, callback) {
     try {
-        const resp = await fetch(`http://localhost:58513/page/save`, {
+        const resp = await fetch(`http://localhost:58513/pages`, {
             method: 'POST',
             body: data
         })
 
-        return await resp.json();
+        const newData = await resp.json();
+        addPage(newData);
+        callback()
+
+        const index = newData.length;
+
+        window.location.href = `/#${ newData[ index - 1 ].uuid }`;
     } catch (error) {
         return error
     }
 }
 
 function handleSubmit(event) {
-    // ! TODO ESTE CODIGO
     event.preventDefault();
-    // let obj = {}
-    // let data = [...event.target];
-    // let file = data[2].files[0];
-    // data.forEach(input => obj[input.id] = input.value);
-
-    // obj.imagen = file
-
-    // const form = new FormData();
-    // form.append("imagen", obj.imagen)
-    // form.append("description", obj.description)
-    // form.append("section", obj.section)
-    // ! SE TRANSFORMA EN ESTO
-
     const form = new FormData(event.target);
-    console.log( Object.fromEntries(form.entries()))
-    savePage(form)
-
+    savePage(form, () => {
+        $("#addPadeModal").modal("hide")
+        addPageForm.reset();
+    })
 }
 
 addPageForm.addEventListener("submit", handleSubmit);
