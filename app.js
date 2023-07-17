@@ -38,11 +38,16 @@ app.post('/pages', upload.single('imagen'), (req, res) => {
   let dest = fs.createWriteStream(target);
 
   src.pipe(dest);
+
+  src.on('end', function(err) { 
+    const newData = {url, imagen, section, description, created};
+
+    pages.postData(newData, (data) => res.json(data));
+  });
+
   src.on('error', function(err) { res.json({ err }); });
 
-  const newData = {url, imagen, section, description, created};
-
-  pages.postData(newData, (data) => res.json(data));
+ 
 
 });
 
