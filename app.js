@@ -28,24 +28,42 @@ app.get('/pages', (req, res) => pages.getData(( data => res.status(data.status).
 
 app.post('/pages', upload.single('imagen'), (req, res) => {
 
-  const { url, description, section } = req.body;
+  console.log(req.headers)
+  const { url, description, section, imagen = '', src = '', author = '', authorUrl = '' } = req.body;
   const created = new Date().toLocaleDateString("es-ES");
-  const imagen = "images/" + req.file.originalname;
 
-  const target = targetPath + req.file.originalname;
+  if(req.headers['content-type'] != 'application/json') {
+    // SE QUE CUANDO HAYA UN CONTENT-TYPE ES PORQUE ESTOY ENVIANDO EL FORM DATA
+    const imagen = "images/" + req.file.originalname;
+  
+    const target = targetPath + req.file.originalname;
+  
+    let src = fs.createReadStream(req.file.path);
+    let dest = fs.createWriteStream(target);
+  
+    src.pipe(dest);
+  
+    src.on('end', function(err) { 
+      const newData = {url, imagen, section, description, created};
+  
+      pages.postData(newData, (data) => res.status(data.status).json(data));
+    });
+  
+    src.on('error', function(err) { res.status(data.status).json({ err }); });
+    return;
+  }
 
-  let src = fs.createReadStream(req.file.path);
-  let dest = fs.createWriteStream(target);
-
-  src.pipe(dest);
-
-  src.on('end', function(err) { 
-    const newData = {url, imagen, section, description, created};
-
-    pages.postData(newData, (data) => res.status(data.status).json(data));
-  });
-
-  src.on('error', function(err) { res.status(data.status).json({ err }); });
+  const newData = {
+    author,
+    authorUrl,
+    created, 
+    description, 
+    imagen, 
+    section, 
+    src, 
+    url, 
+  };
+  pages.postData(newData, (data) => res.status(data.status).json(data));
 
  
 
