@@ -1,16 +1,11 @@
-// import { addPage }  from './printHtml'
+document.body.addEventListener("click", function (event) {
+  if(event.target.classList.contains("displayMediaPlayer")) {
+    const videosrc= event.target.getAttribute("data-src");
+    document.querySelector("#mediaPlayer").setAttribute("src", videosrc);
 
-(async () => {
-  try {
-    const pagesApi = await fetch(`http://localhost:58513/pages/`);
-    const pagesData = await pagesApi.json();
-
-    if (Object.keys(pagesData).length === 0) {
-      throw new Error("No data found");
-    }
-
-    addPage(pagesData.data);
-  } catch (error) {
-    throw new Error(`An error: ${error}`);
+    $('#exampleModal').modal('show')
   }
-})();
+})
+
+
+getPages();
