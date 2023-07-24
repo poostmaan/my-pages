@@ -5,3 +5,11 @@
 .box-shadow:hover > .close-btn {
     display: block;
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.nav-active {
+    background-color: cadetblue;
+}
