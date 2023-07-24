@@ -5,6 +5,7 @@ public/js/helpers/getXnxxInfo.js
 public/data
 dist-ssr
 *.local
+.env
 
 # Editor directories and files
 .vscode/*
