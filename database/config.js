@@ -4,7 +4,7 @@ const dbConnect = async() => {
     try {
         
         mongoose.set('strictQuery', false);
-        await mongoose.connect(`mongodb+srv://${ process.env.DB_USER }:${ process.env.DB_PASSWORD }@mypagesdb.aqvzukp.mongodb.net/`);
+        await mongoose.connect(`mongodb+srv://${ process.env.DB_USER }:${ process.env.DB_PASSWORD }@mypagesdb.aqvzukp.mongodb.net/myPages`);
 
         console.log("Everything goes fine! DB connected");
 

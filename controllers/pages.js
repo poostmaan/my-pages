@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { PagesData } = require('../helpers/PagesData');
 const pages = new PagesData();
 
