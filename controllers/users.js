@@ -3,24 +3,25 @@ const User = require('../models/user.model');
 
 const signin = async(req, res) => { 
     const { user, password } = req.body;
+    console.log(req.body);
 
     try {
         const userInstance = await User.findOne({ user });
         if(!userInstance) {
-            res.status(400).json({ message: "User not found"});
+            return res.status(400).json({ ok: false,  error: [{ msg: "User not found" }] });
         }
 
         const passwordIsCorrect = bcrypt.compareSync(password, userInstance.password);
         if(!passwordIsCorrect) {
-            res.status(400).json({ message: "wront password"});
+            return res.status(400).json({ ok: false, error: [{ msg: "wront password" }] });
         }
 
         delete userInstance.__v;
 
-        res.status(200).json({ ok: true, id: userInstance._id, user })
+        return res.status(200).json({ ok: true, id: userInstance._id, user })
 
-    } catch (error) {
-        res.status(500).json({ message: "fallo" + error});
+    } catch (err) {
+        return res.status(500).json({ ok: false, error: [{msg: err }]});
     }
 }
 
@@ -44,7 +45,7 @@ const createUser = async(req, res) => {
         res.status(201).json({ ok: true, ...user})
 
     } catch (error) {
-        res.status(400).json({message: 'something went wrong' + error})
+        res.status(400).json({ ok: false, message: 'something went wrong' + error})
     }
 
     
