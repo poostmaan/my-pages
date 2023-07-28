@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Album example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/album.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+
+  <body>
+    <script>
+      if(!sessionStorage.getItem('auth')) {
+        location.href = '/signin.html'
+      }
+    </script>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow" id="u-navbar">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Album</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <button class="btn btn-primary position-fixed" style="bottom: 25px; right: 25px; z-index: 100" data-toggle="modal" data-target="#addPadeModal"><b>+</b> | Agregar</button>
+
+    <main role="main">
+
+      <div class="row mr-0">
+        <div class="col-md-3 bg-dark">
+          <div class="bg-dark" style="height: calc(100vh - var(--header-message));">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white position-fixed" style="width: 24%;">
+              <ul class="nav nav-pills flex-column mb-autos" id="navbar">
+                
+              </ul>
+              <hr>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="album py-5 bg-light">
+            <div class="container">
+    
+              <div class="row" id="pages"></div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </main>
+
+    <div class="modal fade" id="addPadeModal" tabindex="-1" role="dialog" aria-labelledby="addPadeModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPadeModalTitle">Add new page</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" id="addPageForm" enctype="multipart/form-data">
+
+              <input type="text" class="form-control rounded-0 border-top-0 border-right-0 border-left-0 mb-3" name="url" id="url" placeholder="Type a url" maxlength="80">
+              <input type="text" class="form-control rounded-0 border-top-0 border-right-0 border-left-0 mb-3" name="description" id="description" placeholder="Type a description" maxlength="60">
+
+              <!-- <input type="text" list="section" class="form-control rounded-0 border-top-0 border-right-0 border-left-0 mb-3"/> -->
+              <select name="section" id="section" class="form-control rounded-0 border-top-0 border-right-0 border-left-0 mb-3"s>
+                <option value="Miscellaneous" selected>Miscellaneous</option>
+                <option value="Programming">Programming</option>
+                <option value="XXX">XXX</option>
+              </select>
+
+              <input type="file" class="form-control rounded-0 border-top-0 border-right-0 border-left-0 mb-3" name="imagen" id="imagen">
+
+              <input type="submit" value="SAVE" class="btn btn-primary">
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <video preload="auto" src="" id="mediaPlayer" controls></video>
+        </div>
+          
+      </div>
+    </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/holder.min.js"></script>
+    
+    <script src="js/classes/Storage.js"></script>
+    <script src="js/classes/Html.js"></script>
+    <script src="js/classes/Pages.js"></script>
+    <script src="js/classes/Section.js"></script>
+    <script src="js/apis/pagesApis.js"></script>
+    <script src="js/handleFilter.js"></script>
+    <script src="js/handleForm.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+      var otherElement = document.getElementById("u-navbar");
+        var otherElementHeight = otherElement.offsetHeight;
+
+        // Aplicar la altura obtenida en CSS como una variable personalizada
+        document.documentElement.style.setProperty("--header-message", otherElementHeight + "px");
+    </script>
+  </body>
+</html>

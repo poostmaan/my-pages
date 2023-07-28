@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- Custom styles for this template -->
+    <link href="./css/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <main>
+        <form class="form-signin" method="POST" enctype="application/json" id="signin">
+          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <label for="inputUser" class="sr-only">User</label>
+          <input type="text" id="inputUser" name="user" class="form-control" placeholder="User" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
+        </form>
+        <div id="alerts-container" class="position-fixed" style="right: 5px"></div> 
+    </main>
+  </body>
+  <script src="./js/classes/Storage.js"></script>
+  <script src="./js/apis/authApis.js"></script>
+  <script src="./js/handleSignin.js"></script>
+</html>
