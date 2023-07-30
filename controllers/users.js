@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
+const { generateJwt } = require('../helpers/jwt');
 
 const signin = async(req, res) => { 
     const { user, password } = req.body;
-    console.log(req.body);
 
     try {
         const userInstance = await User.findOne({ user });
@@ -18,10 +18,12 @@ const signin = async(req, res) => {
 
         delete userInstance.__v;
 
-        return res.status(200).json({ ok: true, id: userInstance._id, user })
+        const token = await generateJwt( userInstance._id, userInstance.user );
+
+        return res.status(200).json({ ok: true, id: userInstance._id, user, token })
 
     } catch (err) {
-        return res.status(500).json({ ok: false, error: [{msg: err }]});
+        return res.status(500).json({ ok: false, error: [{msg: `there is an erro` + err }]});
     }
 }
 

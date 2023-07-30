@@ -8,7 +8,7 @@ const {
   deleteUser,
   signin,
 } = require("../controllers/users");
-const { validateUser } = require("../middlewares/users");
+const { validateCheckResults } = require("../middlewares/validateCheckResults");
 const router = Router();
 
 router.post("/signin", 
@@ -16,7 +16,7 @@ router.post("/signin",
   check("password")
     .notEmpty().withMessage("Password is not defined or its value it is not correct")
     .isLength({ min: 2, max: 16}).withMessage("Password must contain min 2 and max 16 characters"),
-  validateUser
+  validateCheckResults
 , signin);
 router.get("/:id", getUser);
 router.get("/", getUsers);
