@@ -11,7 +11,7 @@ const validateJwt = (req, res, next) => {
         req.id = tokenIsValid.id,
         req.user = tokenIsValid.user
     } catch (error) {
-        return res.status(500).json({ ok: false, error: [{msg: 'token is invalid'}] });
+        return res.status(500).json({ ok: false, error: [{msg: 'token is expired'}] });
     }
 
     next();

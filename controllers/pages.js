@@ -6,7 +6,22 @@ const pages = new PagesData();
 const getPages = async(req, res) => {
   try{
     const data =  await Page.find({ user: req.id });
-    return res.status(200).json({ ok:true, data })
+
+    let sections = [];
+    data.forEach(e => {
+
+      let index = sections.findIndex(f => f.section == e.section);
+      if(index < 0) {
+        sections.push({section: e.section, count: 1})
+      } else {
+        let { count } = sections[index];
+        ++count;
+        sections[index] = { ...sections[index], count};
+      }
+    
+    })
+
+    return res.status(200).json({ ok:true, data, sections })
   }catch(err){
     return res.status(500).json({ ok: false, error: [{ msg :"Something went Wrong!" + err}] });
   }
@@ -34,11 +49,34 @@ const postPages = async(req, res) => {
       page.user = req.id;
 
       await page.save();
+
+      const data =  await Page.find({ user: req.id });
+
+      let sections = [];
+      data.forEach(e => {
+
+        let index = sections.findIndex(f => f.section == e.section);
+        if(index < 0) {
+          sections.push({section: e.section, count: 1})
+        } else {
+          let { count } = sections[index];
+          ++count;
+          sections[index] = { ...sections[index], count};
+        }
       
-      return res.status(200).json({ ok: true, page });
+      })
+      
+      return res.status(200).json({ ok: true, data, sections });
 
     } catch (err) {
-      return res.status(500).json({ ok: false, error: [{ msg: `something wrong ${err}`}] });
+
+      let msg = '';
+
+      if(err == "TypeError: Cannot read properties of undefined (reading 'buffer')") {
+        msg = "Image not sent"
+      }
+
+      return res.status(500).json({ ok: false, error: [{ msg }] });
     }
 
     

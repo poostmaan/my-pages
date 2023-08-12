@@ -37,3 +37,17 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.btn-purple {
+  background-color: #d4c2ff;
+  border-color: #d4c2ff;
+  color: #613d93;
+}
+
+.border-darker{
+  border-color: #21262b;
+}
+
+.border-r {
+  border: 1px solid;
+}
