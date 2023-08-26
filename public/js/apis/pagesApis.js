@@ -1,5 +1,6 @@
 const pages = new Pages();
 const section = new Section();
+const PROD_URL="https://my-pages-43zk-dev.fl0.io"
 
 const user = Storage.getData("auth");
 const { token } = user;
@@ -11,7 +12,7 @@ async function getPages() {
   headers.append("x-access-token", token);
 
   try {
-    const pagesApi = await fetch(`http://localhost:58513/pages/`, {
+    const pagesApi = await fetch(`${PROD_URL}/pages/`, {
       headers,
     });
 
@@ -44,7 +45,7 @@ async function savePage(data = {}, callback, btnSubmitter) {
   headers.append("x-access-token", token);
 
   try {
-    const resp = await fetch(`http://localhost:58513/pages`, {
+    const resp = await fetch(`${PROD_URL}/pages`, {
       headers,
       method: "POST",
       body: data,
@@ -82,7 +83,7 @@ async function deletePage(uuid = "") {
   }
 
   try {
-    await fetch(`http://localhost:58513/pages/${uuid}`, {
+    await fetch(`${PROD_URL}/pages/${uuid}`, {
       headers,
       method: "delete",
     });
