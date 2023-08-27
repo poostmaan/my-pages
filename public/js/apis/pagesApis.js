@@ -1,6 +1,6 @@
 const pages = new Pages();
 const section = new Section();
-const PROD_URL="https://my-pages-43zk-dev.fl0.io"
+const PROD_URL= window.location.origin
 
 const user = Storage.getData("auth");
 const { token } = user;

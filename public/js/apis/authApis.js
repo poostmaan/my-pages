@@ -1,6 +1,6 @@
 async function signin(user) { 
     
-    const PROD_URL="https://my-pages-43zk-dev.fl0.io"
+    const PROD_URL=window.location.origin
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     console.log(user);
